@@ -17,8 +17,8 @@ export default function Footer() {
                     />
                     
                     {/* Thông tin liên hệ */}
-                    <ul className="text-white space-y-2 text-center sm:text-left">
-                        <li>Hỗ trợ khách hàng: support@perfectdate.com</li>
+                    <ul className="text-white space-y-2 text-center sm:text-left font-poppins-light">
+                        <li className=" ">Hỗ trợ khách hàng: support@perfectdate.com</li>
                         <li>Số điện thoại: 0123456789</li>
                         <li>Địa chỉ: 02 Võ Oanh, TP.HCM</li>
                     </ul>

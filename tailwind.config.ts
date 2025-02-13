@@ -7,6 +7,11 @@ export default {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
+    fontFamily: {
+      'poppins-bold': ['Poppins Bold', 'sans-serif'],
+      'poppins-light': ['Poppins Light', 'sans-serif'],
+      'poppins-medium': ['Poppins Medium', 'sans-serif'],
+    },
     extend: {
       colors: {
         background: "var(--background)",
