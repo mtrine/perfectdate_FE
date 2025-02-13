@@ -11,7 +11,7 @@ export default function Header() {
                     <Image
                         src={LogoImage}
                         alt="Perfect Date Logo"
-                       className="w-[70px] h-auto sm:w-[80px]"
+                       className="w-[20px] h-auto sm:w-[80px]"
                         priority
                     />
                 </div>

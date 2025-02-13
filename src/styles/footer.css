@@ -2,7 +2,7 @@
     font-family: 'Poppins Light';
     src: url("../assets/fonts/FZ\ Poppins-Light.ttf") format('truetype');
   }
-li {
+footer li {
     list-style: none;
     font-size: 16px;
     font-family: 'Poppins Light';
