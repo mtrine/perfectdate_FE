@@ -1,28 +1,22 @@
-import DatePlanningSteps from "@/components/DatePlanningSteps";
-import LogoImage from "@/assets/logo-not-bg.png"
-import CalendarImage from "@/assets/calendar.png"
+"use client"
+import Button from "@/components/Button";
+
 export default function HomePage() {
-    return (
-        <div className="home-main">
-            <div className="flex flex-row gap-4">
-            <DatePlanningSteps 
-               image={CalendarImage}
-               tilte="Lên kế hoạch hẹn hò"
-               description="Chọn địa điểm, thời gian và hoạt động và hoàn thành kế hoạch hẹn hò lãng mạn chỉ trong vài phút."
-            />
-            <DatePlanningSteps 
-               image={CalendarImage}
-               tilte="Lên kế hoạch hẹn hò"
-               description="Chọn địa điểm, thời gian và hoạt động và hoàn thành kế hoạch hẹn hò lãng mạn chỉ trong vài phút."
-            />
-            <DatePlanningSteps 
-               image={CalendarImage}
-               tilte="Lên kế hoạch hẹn hò"
-               description="Chọn địa điểm, thời gian và hoạt động và hoàn thành kế hoạch hẹn hò lãng mạn chỉ trong vài phút."
-            />
-            </div>
 
-
-        </div>
-    )
+  return (
+     <div className="h-screen">
+      <Button text="Đăng ký" type="primary" onClick={() => console.log("Clicked!")} />
+     </div>
+     
+    //  <GoogleOAuthProvider clientId="431178237879-6ie0o2acablf1ulbf3dgj39kblfot5p1.apps.googleusercontent.com">
+    //   <GoogleLogin
+    //     onSuccess={(response) => {
+    //       console.log("Access Token:", response.credential);
+    //     }}
+    //     onError={() => {
+    //       console.log("Login Failed");
+    //     }}
+    //   />
+    // </GoogleOAuthProvider>
+  );
 }

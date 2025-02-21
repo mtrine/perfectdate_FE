@@ -4,18 +4,23 @@
 
 
 @font-face {
-  font-family: 'Poppins Medium';
-  src: url("../assets/fonts/FZ\ Poppins-Medium.ttf") format('truetype');
+  font-family: 'Playfair Display Bold';
+  src: url("../assets/fonts/Playfair_Display/PlayfairDisplay-Bold.ttf") format('truetype');
 }
 
 @font-face {
-  font-family: 'Poppins Light';
-  src: url("../assets/fonts/FZ\ Poppins-Light.ttf") format('truetype');
+  font-family: 'Montserrat Regular';
+  src: url("../assets/fonts/Montserrat/Montserrat-Regular.ttf") format('truetype');
 }
 
 @font-face {
-  font-family: 'Poppins Bold';
-  src: url("../assets/fonts/FZ\ Poppins-Bold.ttf") format('truetype');
+  font-family: 'Montserrat Bold';
+  src: url("../assets/fonts/Montserrat/Montserrat-Bold.ttf") format('truetype');
+}
+
+@font-face {
+  font-family: 'Playfair Display Regular';
+  src: url("../assets/fonts/Playfair_Display/PlayfairDisplay-Regular.ttf") format('truetype');
 }
 
 /* Extra small devices (phones, 600px and down) */
@@ -23,13 +28,24 @@
   body {
     font-size: 7px;
   }
-  
+  h1 {
+    font-size: 1rem;
+  }
+  h2 {
+    font-size: 1rem;
+  }
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) {
   body {
     font-size: 9px;
+  }
+  h1 {
+    font-size: 1.5rem;
+  }
+  h2 {
+    font-size: 1.25rem;
   }
 }
 
@@ -38,6 +54,10 @@
   body {
     font-size: 10px;
   }
+  
+  h2 {
+    font-size: 1.5rem;
+  }
 }
 
 /* Large devices (laptops/desktops, 992px and up) */
@@ -45,26 +65,17 @@
   body {
     font-size: 14px;
   }
-}
-
-/* Extra large devices (large laptops and desktops, 1200px and up) */
-@media only screen and (min-width: 1200px) {
-  body {
-    font-size: 16px;
+  h1 {
+    font-size: 2rem;
+  }
+  h2 {
+    font-size: 2rem;
   }
 }
-
 
 :root {
-  --background: #ffffff;
+  --background: #FFFDEF;
   --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
 }
 
 * {
@@ -76,5 +87,4 @@
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: 'Poppins Medium', sans-serif;
 }

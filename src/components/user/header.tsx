@@ -1,28 +1,35 @@
 "use client";
-
 import Image from "next/image";
-import LogoImage from "@/assets/logo-not-bg.png"
+import AccountIcon from "@/assets/account_icon.svg";
+import MenuIcon from "@/assets/menu_icon.svg";
+import "@/styles/header.css";
+
+
 export default function Header() {
     return (
-        <header className="h-24">
-            <nav className="fixed top-[10px] left-0 right-0 z-50 flex justify-center ">
-               <div className="flex justify-between bg-green rounded-full pr-[50px] pl-[50px] w-[70%]  items-center shadow-md ">
-               <div className="flex items-center">
+        <header className="bg-cream border-b-2 border-darkRed fixed top-0 left-0 right-0 z-10">
+            <nav className="flex justify-between items-center px-4 py-2 md:px-8 lg:px-12">
+                <div className="flex-1 text-center">
+                    <h1 className=" font-playfair-bold text-darkRed">PerfectDate</h1>
+                </div>
+                <div className="flex gap-1 ml-auto">
+                <Image
+                        src={AccountIcon}
+                        alt="Logo"
+                        width={20}
+                        height={20}
+                        className="lg:w-[40px] lg:h-[40px] "
+                    />
                     <Image
-                        src={LogoImage}
-                        alt="Perfect Date Logo"
-                       className="w-[20px] h-auto sm:w-[80px]"
-                        priority
+                        src={MenuIcon}
+                        alt="Logo"
+                        width={20}
+                        height={20}
+                        className="lg:w-[40px] lg:h-[40px] "
                     />
                 </div>
-                <ul className="flex items-center space-x-4">
-                    <li><a href="#" className="text-blue hover:text-white">Trang chủ</a></li>
-                    <li><a href="#" className="text-blue hover:text-white">Khám phá</a></li>
-                    <li><a href="#" className="text-blue hover:text-white">Liên hệ</a></li>
-                </ul>
-                <button className="border px-4 py-2 rounded-full">Đăng nhập</button>
-               </div>
             </nav>
         </header>
     );
 }
+
