@@ -7,15 +7,20 @@ export default {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
+    fontFamily: {
+      'playfair-bold': ['Playfair Display Bold', 'serif'],
+      'montserrat-regular': ['Montserrat Regular', 'sans-serif'],
+      'montserrat-bold': ['Montserrat Bold', 'sans-serif'],
+      'playfair-regular': ['Playfair Display Regular', 'serif']
+    },
     extend: {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
-        green: "#11A253",
-        pink:"#FCA4E0",
-        skin:"#FDEDD4",
-        blue:"#155FCC",
-        red:"#E93729",
+        darkRed:"#690E0D",
+        lightRed:"#8D0C07",
+        gray:"#272421",
+        cream:"#FFFDEF"
       },
     },
   },
