@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
-import AccountIcon from "@/assets/account_icon.svg";
-import MenuIcon from "@/assets/menu_icon.svg";
+import AccountIcon from "@/assets/images/account_icon.svg";
+import MenuIcon from "@/assets/images/menu_icon.svg";
 import "@/styles/header.css";
 
 
