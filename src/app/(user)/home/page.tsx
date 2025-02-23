@@ -6,10 +6,9 @@ export default function HomePage() {
   function handleRegister() {
     console.log("Đăng ký");
   }
-  handleRegister()
+  console.log("Render HomePage");
   return (
      <div className="">
-      
         <WeBringIt />
      </div>
      
