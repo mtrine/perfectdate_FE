@@ -10,7 +10,7 @@ export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
-}>) {
+}>) {console.log("Render HomeLayout");
   return (
     <html lang="en">
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />

@@ -18,7 +18,7 @@ export default function Button({ text, onClick, type }: ButtonProps) {
             : "rounded-[10px] hover:bg-darkRed hover:text-white"
         }
       `}
-      onClick={onClick}
+      onClick={()=>onClick()}
     >
       {text}
     </button>
