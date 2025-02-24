@@ -8,7 +8,7 @@ export default function WeBringIt() {
         <Image
           src={LineImage}
           alt="Line Image"
-          className="w-full h-auto lg:h-[200px]"
+          className="object-cover w-full h-auto lg:h-[200px]"
         />
         <h2 className="text-darkRed font-playfair-bold text-center ">Chúng tớ mang đến...</h2>
         <div className="flex flex-wrap sm:flex-nowrap gap-4 justify-center items-center w-full max-w-4xl mt-6 ">
