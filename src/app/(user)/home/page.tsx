@@ -12,9 +12,9 @@ export default function HomePage() {
   }
   
   return (
-     <div className="flex flex-col gap-[50px]">
+     <div className="flex flex-col gap-5">
         <HeroBanner />
-        <Image src={AfterBanner} alt="After Banner" className="object-cover sm:max-h-[50px] lg:max-h-[150px] md:max-h-[100px] w-auto outline outline-[5px] outline-darkRed"/>
+        <Image src={AfterBanner} alt="After Banner" className="object-cover h-[70px] sm:h-[200px] w-auto outline outline-[5px] outline-darkRed"/>
         <ProblemAwareness/>
         <WeBringIt />
 
