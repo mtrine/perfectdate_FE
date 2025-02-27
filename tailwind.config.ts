@@ -13,6 +13,7 @@ export default {
       'montserrat-bold': ['Montserrat Bold', 'sans-serif'],
       'playfair-regular': ['Playfair Display Regular', 'serif']
     },
+    
     extend: {
       colors: {
         background: "var(--background)",
@@ -22,6 +23,16 @@ export default {
         gray:"#272421",
         cream:"#FFFDEF"
       },
+      keyframes: {
+        scrollDown: {
+          '0%': { transform: 'translateY(-10px)', opacity: '0' },
+          '100%': { transform: 'translateY(0)', opacity: '1' },
+        },
+      },
+      animation: {
+        'scroll-down': 'scrollDown 0.5s ease-out',
+      },
+      
     },
   },
   plugins: [],

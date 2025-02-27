@@ -41,6 +41,13 @@
     font-family: 'Playfair Display Regular';
   }
 
+  h4{
+    font-size: 0.35rem;
+  }
+  span {
+    font-size: 0.25rem;
+  }
+
 
 }
 
@@ -61,6 +68,12 @@
     font-size: 0.75rem;
     font-family: 'Playfair Display Regular';
   }
+  h4{
+    font-size: 0.5rem;
+  }
+  span{
+    font-size: 0.35rem;
+  }
 
 }
 
@@ -78,6 +91,12 @@
   h3 {
     font-size: 1rem;
     font-family: 'Playfair Display Regular';
+  }
+  h4{
+    font-size: 0.75rem;
+  }
+  span{
+    font-size: 0.5rem;
   }
 
 
@@ -102,6 +121,12 @@
   }
   button{
     font-size: 0.8rem;
+  }
+  h4{
+    font-size: 0.65rem;
+  }
+  span{
+    font-size: 0.5rem;
   }
 }
 
