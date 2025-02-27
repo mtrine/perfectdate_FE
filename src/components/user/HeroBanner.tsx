@@ -33,7 +33,7 @@ export default function HeroBanner() {
                 <Button 
                     text="Tạo kế hoạch ngay"
                     onClick={() => {}}
-                    type="primary"
+                    typeButton="primary"
                     color="darkRed">               
                 </Button>
             </div>
