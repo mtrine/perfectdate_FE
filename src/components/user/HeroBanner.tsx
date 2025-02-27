@@ -6,7 +6,7 @@ import Button from "../Button";
 
 export default function HeroBanner() {
     return (
-        <div className="flex items-center justify-center ">
+        <div className="flex items-center justify-center mx-[5%] ">
             <Image 
                 src={ImageBanner} 
                 alt="Hero Banner" 
@@ -33,7 +33,8 @@ export default function HeroBanner() {
                 <Button 
                     text="Tạo kế hoạch ngay"
                     onClick={() => {}}
-                    type="primary">
+                    type="primary"
+                    color="darkRed">               
                 </Button>
             </div>
         </div>

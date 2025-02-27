@@ -8,7 +8,7 @@ export default function WeBringIt() {
         <Image
           src={LineImage}
           alt="Line Image"
-          className="object-cover w-full h-auto lg:h-[200px]"
+          className="object-fit h-full lg:h-[200px]"
         />
         <h2 className="text-darkRed font-playfair-bold text-center ">Chúng tớ mang đến...</h2>
         <div className="flex flex-wrap sm:flex-nowrap gap-4 justify-center items-center w-full max-w-4xl mt-6 ">
@@ -16,6 +16,6 @@ export default function WeBringIt() {
         <Feature text="Tính năng AI gợi ý giúp bạn" hoverText="Nhập nhưng yêu cầu cơ bản cho buổi hẹn hò và để AI giúp bạn tìm địa điểm phù hợp" />
         <Feature text="Chia sẻ & khám phá" hoverText="Chia sẻ nhanh chóng và khám phá những buổi hẹn độc đáo từ cộng đồng" />
         </div>
-        </div>
+      </div>
     )
 }
