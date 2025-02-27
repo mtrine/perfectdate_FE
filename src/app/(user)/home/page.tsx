@@ -7,10 +7,7 @@ import ProblemAwareness from "@/components/user/ProblemAwareness";
 
 export default function HomePage() {
 
-  function handleRegister() {
-    console.log("Đăng ký");
-  }
-  
+
   return (
      <div className="flex flex-col gap-5">
         <HeroBanner />

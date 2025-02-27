@@ -41,11 +41,11 @@ export default function SlideBar({ isOpen, setIsOpen }: SlideBarProps) {
         <ul className="mx-auto p-2">
           <li className="menu-item">
             <div
-              className={`flex items-center w-full flex-nowrap ${
+              className={`item w-full flex-nowrap ${
                 pathname === "/home" ? "active" : ""
               }`}
             >
-              <hr className="w-[20px] sm:w-[30px] md:w-[40px] lg:w-[50px] border-t-2 border-cream" />
+              <hr className="w-[20px] sm:w-[30px] border-t-2 border-cream" />
               <Link href="/home" className="ml-2 whitespace-nowrap">
                 Trang chủ
               </Link>
@@ -53,11 +53,11 @@ export default function SlideBar({ isOpen, setIsOpen }: SlideBarProps) {
           </li>
           <li className="menu-item">
             <div
-              className={`flex items-center w-full flex-nowrap ${
+              className={`item w-full flex-nowrap ${
                 pathname === "/discover" ? "active" : ""
               }`}
             >
-              <hr className="w-[20px] sm:w-[30px] md:w-[40px] lg:w-[50px] border-t-2 border-cream" />
+              <hr className="w-[20px] sm:w-[30px]  border-t-2 border-cream" />
               <Link href="/discover" className="ml-2 whitespace-nowrap">
                 Khám phá
               </Link>
@@ -65,11 +65,11 @@ export default function SlideBar({ isOpen, setIsOpen }: SlideBarProps) {
           </li>
           <li className="menu-item">
             <div
-              className={`flex items-center w-full flex-nowrap ${
+              className={`item w-full flex-nowrap ${
                 pathname === "/contact" ? "active" : ""
               }`}
             >
-              <hr className="w-[20px] sm:w-[30px] md:w-[40px] lg:w-[50px] border-t-2 border-cream" />
+              <hr className="w-[20px] sm:w-[30px]  border-t-2 border-cream" />
               <Link href="/contact" className="ml-2 whitespace-nowrap">
                 Liên hệ
               </Link>

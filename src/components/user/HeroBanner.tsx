@@ -12,9 +12,8 @@ export default function HeroBanner() {
                 alt="Hero Banner" 
                 className="w-full max-w-[200px] sm:max-w-[400px] md:max-w-[500px] lg:max-w-[700px] h-auto"
             />
-
             <div>
-                <ul className=" md:text-left w-full gap-2">
+                <ul className=" md:text-left w-full text-justify">
                     <li>
                         <h3 className="text-darkRed  md:text-left">
                             Khám phá những ý tưởng hay từ cộng đồng
