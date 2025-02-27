@@ -27,18 +27,15 @@
 @media only screen and (max-width: 600px) {
   body {
     font-size: 8px;
-    font-family: 'Montserrat Regular'
   }
   h1 {
     font-size: 1rem;
   }
   h2 {
     font-size: 1rem;
-    font-family: 'Playfair Display Bold';
   }
   h3 {
     font-size: 0.5rem;
-    font-family: 'Playfair Display Regular';
   }
 
   h4{
@@ -55,18 +52,15 @@
 @media only screen and (min-width: 600px) {
   body {
     font-size: 9px;
-    font-family: 'Montserrat Regular'
   }
   h1 {
     font-size: 1.5rem;
   }
   h2 {
     font-size: 1.25rem;
-    font-family: 'Playfair Display Bold';
   }
   h3 {
     font-size: 0.75rem;
-    font-family: 'Playfair Display Regular';
   }
   h4{
     font-size: 0.5rem;
@@ -81,16 +75,15 @@
 @media only screen and (min-width: 768px) {
   body {
     font-size: 10px;
-    font-family: 'Montserrat Regular'
   }
-  
+  h1{
+    font-size: 2rem;
+  }
   h2 {
     font-size: 1.5rem;
-    font-family: 'Playfair Display Bold';
   }
   h3 {
     font-size: 1rem;
-    font-family: 'Playfair Display Regular';
   }
   h4{
     font-size: 0.75rem;
@@ -106,18 +99,16 @@
 @media only screen and (min-width: 992px) {
   body {
     font-size: 14px;
-    font-family: 'Montserrat Regular'
   }
   h1 {
-    font-size: 2rem;
+    font-size: 2.5rem;
   }
   h2 {
-    font-size: 1.5rem;
-    font-family: 'Playfair Display Bold';
+    font-size: 2rem;
+    
   }
   h3 {
-    font-size: 1rem;
-    font-family: 'Playfair Display Regular';
+    font-size: 1.25rem;
   }
   button{
     font-size: 0.8rem;
@@ -142,6 +133,20 @@
 }
 
 body {
+  font-family: 'Montserrat Regular';
   color: var(--foreground);
   background: var(--background);
+}
+
+h1{
+  font-family: 'Playfair Display Bold';
+}
+
+h2{
+  font-family: 'Playfair Display Bold';
+}
+
+h3{
+  font-family: 'Playfair Display Regular';
+
 }
