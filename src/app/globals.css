@@ -23,10 +23,10 @@
   src: url("../assets/fonts/Playfair_Display/PlayfairDisplay-Regular.ttf") format('truetype');
 }
 
-/* Extra small devices (phones, 600px and down) */
+/* Extra small devices (phones, 600px and down)
 @media only screen and (max-width: 600px) {
   body {
-    font-size: 6px;
+    font-size: 0.5rem;
   }
   h1 {
     font-size: 0.8rem;
@@ -43,74 +43,71 @@
   span {
     font-size: 0.3rem;
   }
-}
+} */
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
-@media only screen and (min-width: 600px) {
+@media only screen and (max-width: 768px) {
   body {
-    font-size: 7px;
+    font-size: 0.55rem ;
   }
   h1 {
-    font-size: 0.9rem;
+    font-size: 1rem ;
   }
   h2 {
-    font-size: 0.75rem;
+    font-size: 0.8rem;
   }
   h3 {
-    font-size: 0.55rem;
+    font-size: 0.7rem; ;
   }
   h4 {
-    font-size: 0.45rem;
+    font-size: 0.6rem ;
   }
   span {
-    font-size: 0.35rem;
+    font-size: 0.5rem;
   }
 }
 
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
   body {
-    font-size: 8px;
+    font-size: 0.65rem ;
   }
   h1 {
-    font-size: 1rem;
+    font-size: 1.25rem  ;
   }
   h2 {
-    font-size: 0.85rem;
+    font-size: 1rem ;
   }
   h3 {
-    font-size: 0.6rem;
+    font-size: 0.8rem ;
   }
   h4 {
-    font-size: 0.5rem;
+    font-size: 0.7rem ;
   }
   span {
-    font-size: 0.4rem;
+    font-size: 0.6rem ;
   }
 }
 
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
   body {
-    font-size: 9px;
+    font-size:0.75rem ;
   }
   h1 {
-    font-size: 1.2rem;
+    font-size: 1.65rem ;
   }
   h2 {
-    font-size: 1rem;
+    font-size: 1.25rem ;
   }
   h3 {
-    font-size: 0.65rem;
+    font-size: 1rem ;
   }
   h4 {
-    font-size: 0.55rem;
-  }
-  button {
-    font-size: 0.5rem;
+    font-size: 0.8rem ;
   }
   span {
-    font-size: 0.4rem;
+    font-size: 0.7rem ;
   }
 }
 

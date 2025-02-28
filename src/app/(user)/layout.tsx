@@ -8,9 +8,9 @@ export default function HomeLayout({ children }: { children: React.ReactNode }) 
         <div className="main-container">
             <Header />
             
-            <div className="pt-[70px] sm:pt-[110px] md:pt-[120px] lg:pt-[130px]">
+            <main className="mt-0"> {/* Đảm bảo không có margin-top */}
                 {children}
-            </div>
+            </main>
             <Footer  />
         </div>
     );

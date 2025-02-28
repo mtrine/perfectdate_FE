@@ -14,7 +14,7 @@ interface SlideBarProps {
 export default function SlideBar({ isOpen, setIsOpen }: SlideBarProps) {
   const pathname = usePathname();
   const [hoveredItem, setHoveredItem] = useState<string | null>(null);
-  
+
   return (
     <>
       {/* Overlay mờ khi mở slidebar */}
@@ -40,7 +40,7 @@ export default function SlideBar({ isOpen, setIsOpen }: SlideBarProps) {
         />
         
         {/* Menu */}
-        <ul className="mx-auto p-2">
+        <ul className="p-2 ">
           {[
             { path: "/home", label: "Trang chủ" },
             { path: "/explore", label: "Khám phá" },
@@ -53,19 +53,18 @@ export default function SlideBar({ isOpen, setIsOpen }: SlideBarProps) {
               onMouseLeave={() => setHoveredItem(null)}
             >
               <div
-                className={`flex items-center w-full flex-nowrap`}
+                className={`flex items-center justify-center w-full flex-nowrap `}
               >
                 <div 
                   className="line-indicator" 
                   style={{
-                    width: hoveredItem === item.path || (pathname === item.path && hoveredItem === null) ? '15px' : '0',
+                    width: hoveredItem === item.path || (pathname === item.path && hoveredItem === null) ? '2rem' : '0',
                     height: '2px',
                     backgroundColor: '#F5F5DC',
                     transition: 'width 0.3s ease',
                     marginRight: '5px'
                   }}
                 />
-                <hr className="w-[20px] sm:w-[30px] md:w-[40px] lg:w-[50px] border-t-2 border-cream" />
                 <Link href={item.path} className="ml-2 whitespace-nowrap">
                   {item.label}
                 </Link>
