@@ -15,7 +15,7 @@ export default function InvitationBanner() {
             <Button 
                 text="Khám phá ngay"
                 onClick={() => {}}
-                type="secondary"
+                typeButton="secondary"
                 color="cream"
             />
         </div>
