@@ -46,36 +46,6 @@ ul li {
 }
 
 
-
-hr {
-    display: none;
-}
-
-.menu-item a {
-    transition: font-weight 0.3s ease;
-}
-
-/* Thay thế bằng các rule riêng biệt */
-.menu-item:hover hr {
-    display: block;
-}
-
-.active hr {
-    display: block;
-}
-
-/* Điều chỉnh animation khi hover */
-.menu-item:hover a {
-    font-family: 'Playfair Display Bold', 'sans-serif';
-    animation: moveAndGlitch 0.7s ease forwards;
-}
-
-/* Chỉ áp dụng style active khi không hover */
-.active a {
-    font-family: 'Playfair Display Bold', 'sans-serif';
-    animation: moveAndGlitch 0.7s ease forwards;
-}
-
 .item{
     display: flex;
     justify-content: center;

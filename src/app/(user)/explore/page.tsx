@@ -10,17 +10,20 @@ export default function App() {
   const [isVisible, setIsVisible] = useState(false);
   const ref = useRef(null);
 
-  // Lắng nghe sự kiện cuộn trang để thay đổi kích thước ảnh & background
   useEffect(() => {
     const handleScroll = () => {
-      setScrollY(window.scrollY);
+      const currentScrollY = window.scrollY;
+      if (currentScrollY > 100 && scrollY <= 100) {
+        setScrollY(currentScrollY);
+      } else if (currentScrollY <= 100 && scrollY > 100) {
+        setScrollY(currentScrollY);
+      }
     };
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [scrollY]); // Luôn giữ [scrollY] từ đầu
 
-  // Hiệu ứng xuất hiện cho PostItem khi scroll đến
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -36,25 +39,23 @@ export default function App() {
     return () => {
       if (ref.current) observer.unobserve(ref.current);
     };
-  }, []);
+  }, []); // Không phụ thuộc gì ở đây
 
   return (
     <div
       className="flex flex-col items-center justify-center min-h-screen transition-all duration-500 w-full"
       style={{
-        backgroundImage: scrollY > 100 ? `url(${BgImage.src})`: 'none',
+        backgroundImage: scrollY > 100 ? `url(${BgImage.src})` : "none",
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
-        backgroundColor: scrollY > 100 ? "#FFFDEF" : "transparent", // Khi cuộn xuống, đổi sang màu nền khác
+        backgroundColor: scrollY > 100 ? "#FFFDEF" : "transparent",
       }}
     >
-      {/* Tiêu đề */}
       <h2 className="text-darkRed text-center text-xl md:text-2xl lg:text-3xl font-semibold px-4">
         Cần gì phải đắn đo suy nghĩ về buổi hẹn khi có PerfectDate ở đây?
       </h2>
 
-      {/* Hình ảnh sẽ nhỏ dần khi cuộn xuống */}
       <Image
         src={Explore}
         alt="Explore"
@@ -65,7 +66,6 @@ export default function App() {
         }}
       />
 
-      {/* Danh sách bài viết */}
       <div className="flex flex-col lg:w-[40%] md:w-[50%] sm:w-[80%] h-auto mt-8">
         <div
           ref={ref}
