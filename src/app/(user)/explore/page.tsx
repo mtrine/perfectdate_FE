@@ -59,7 +59,7 @@ export default function App() {
       ></div>
 
       {/* Tiêu đề */}
-      <h2 className="text-darkRed text-center px-4 transition-all duration-500">
+      <h2 className="text-darkRed text-center px-4 transition-all duration-500 mt-[5%]">
         Cần gì phải đắn đo suy nghĩ về buổi hẹn khi có PerfectDate ở đây?
       </h2>
 
@@ -68,12 +68,12 @@ export default function App() {
         alt="Explore"
         className="transition-all duration-500 mt-4"
         style={{
-          width: scrollY > 100 ? "120px" : "250px",
+          width: scrollY > 100 ? "120px" : "500px",
           height: "auto",
         }}
       />
 
-      <div className="flex flex-col lg:w-[40%] md:w-[50%] sm:w-[80%] h-auto mt-8">
+      <div className="flex flex-col lg:w-[50%] md:w-[50%] sm:w-[80%] h-auto mt-8">
         <div
           ref={ref}
           className={`transition-all duration-700 ease-out transform ${
