@@ -23,6 +23,17 @@
   src: url("../assets/fonts/Playfair_Display/PlayfairDisplay-Regular.ttf") format('truetype');
 }
 
+@keyframes heartbeat {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.2); } /* Tim to ra */
+  100% { transform: scale(1); }
+}
+
+.animate-heartbeat {
+  animation: heartbeat 0.8s infinite ease-in-out; /* Lặp vô hạn */
+}
+
+
 /* Extra small devices (phones, 600px and down)
 @media only screen and (max-width: 600px) {
   body {
