@@ -14,10 +14,10 @@ export default function LoadingScreen() {
 
   return (
     <div className="fixed inset-0 flex flex-col items-center justify-center z-50 bg-cream">
-      <div className="relative max-w-[100px] h-auto animate-heartbeat">
+      <div className="relative max-w-[100px] lg:w-[100px] md:w-[70px] sm:w-[50px] h-auto animate-heartbeat">
         <img src={Heart.src} alt="Heart" className="w-full h-full" />
       </div>
-      <h3 className="mt-4 text-lg font-semibold text-gray-700 animate-pulse">Chờ một chút nhé...</h3>
+      <h3 className="mt-4 text-lg font-semibold text-gray animate-pulse">Chờ một chút nhé...</h3>
     </div>
   );
 }

@@ -4,12 +4,21 @@ import Image from "next/image";
 import Explore from "@/assets/images/explore.png";
 import PostItem from "@/components/user/PostItem";
 import BgImage from "@/assets/images/bg-explore.png";
+import { useDispatch } from "react-redux";
+import { getLastestPost } from "@/services/redux/api_request/post_api";
+import { useSelector } from "react-redux";
 
 export default function App() {
   const [scrollY, setScrollY] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
   const ref = useRef(null);
+  const dispatch = useDispatch();
+  const postList = useSelector((state: { post: { postList: { data: any } } }) => state.post.postList.data);
 
+  useEffect(() => {
+    getLastestPost(dispatch);
+
+  }, []);
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
@@ -80,8 +89,20 @@ export default function App() {
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
           }`}
         >
-          <PostItem />
-          <PostItem />
+          {postList.map((post: any) => (
+            <PostItem 
+            id={post._id}
+            user_ava=""
+            user_name=""
+            location=""
+            date=""
+            title=""
+            description=""
+            image_url=""
+            saved_count={0}
+            saved={false}
+            />
+          ))}
         </div>
       </div>
     </div>

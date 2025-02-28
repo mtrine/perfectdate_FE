@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import LoadingScreen from "@/components/LoadingScreen";
 import "./globals.css";
+import StoreProvider from "./StoreProvider";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -17,7 +18,7 @@ export default function RootLayout({
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <body>
         <LoadingScreen/>
-       {children}
+        <StoreProvider>{children}</StoreProvider>
       </body>
     </html>
   );
