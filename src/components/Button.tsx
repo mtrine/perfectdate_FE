@@ -12,8 +12,8 @@ export default function Button({ text, onClick, typeButton, type, color="darkRed
   return (
     <button
       className={`
-        border-2 font-playfair-regular transition-all duration-300 ease-in-out
-        px-5 py-2  sm:px-10 sm:py-5
+        border-[1px] font-playfair-regular transition-all duration-300 ease-in-out
+        px-5 py-2  sm:px-7 sm:py-3
         ${
           typeButton === "primary"
             ? "rounded-[100%]"

@@ -3,7 +3,7 @@ import TitleContact from "@/components/user/TitleContact"
 
 export default function ContactPage() {
     return (
-        <div>
+        <div className="flex flex-col gap-4">
             <TitleContact />
             <MainContact />
         </div>

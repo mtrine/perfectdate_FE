@@ -37,52 +37,60 @@ export default function FormContact() {
 
     return (
         <div className="relative"> {/* Thêm relative để alert neo vào đây nếu cần */}
-            <form onSubmit={handleSubmit(onSubmit)} className="space-y-5 py-[2%]">
-                <div className="flex gap-3">
-                    <Input
-                        type="text"
-                        placeholder="Họ"
-                        className=""
-                        {...register("familyName", { required: "Họ là bắt buộc" })}
-                    />
-                    {errors.familyName && <p className="text-red-500">{errors.familyName.message}</p>}
-                    <Input
-                        type="text"
-                        placeholder="Tên"
-                        className=""
-                        {...register("givenName", { required: "Tên là bắt buộc" })}
-                    />
-                    {errors.givenName && <p className="text-red-500">{errors.givenName.message}</p>}
+            <form onSubmit={handleSubmit(onSubmit)} className="space-y-2 w-full">
+                <div className="flex gap-[10%] w-full">
+                    <div className="flex flex-col w-full">
+                        <Input
+                            type="text"
+                            placeholder="Họ"
+                            className="py-2 px-2 w-full focus:border-1 focus:border-darkRed focus:outline-none"
+                            {...register("familyName", { required: "Họ là bắt buộc" })}
+                        />
+                        {errors.familyName && <p className="text-red-500 px-1">{errors.familyName.message}</p>}
+                    </div>
+                    <div className="flex flex-col w-full">
+                        <Input
+                            type="text"
+                            placeholder="Tên"
+                            className="py-2 px-2 w-full focus:border-darkRed focus:outline-none"
+                            {...register("givenName", { required: "Tên là bắt buộc" })}
+                        />
+                        {errors.givenName && <p className="text-red-500 px-1">{errors.givenName.message}</p>}
+                    </div>
                 </div>
-                <div className="flex gap-3">
-                    <Input
-                        type="email"
-                        placeholder="Email"
-                        className=""
-                        {...register("email", {
-                            required: "Email là bắt buộc",
-                            pattern: {
-                                value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-                                message: "Email không hợp lệ",
-                            },
-                        })}
-                    />
-                    {errors.email && <p className="text-red-500">{errors.email.message}</p>}
-                    <Input
-                        type="phone"
-                        placeholder="Số điện thoại"
-                        className=""
-                        {...register("phone", { required: "Số điện thoại là bắt buộc" })}
-                    />
-                    {errors.phone && <p className="text-red-500">{errors.phone.message}</p>}
+                <div className="flex gap-[10%] w-full">
+                    <div className="w-full flex flex-col">
+                        <Input
+                            type="email"
+                            placeholder="Email"
+                            className="py-2 px-2 w-full focus:border-darkRed focus:outline-none"
+                            {...register("email", {
+                                required: "Email là bắt buộc",
+                                pattern: {
+                                    value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                                    message: "Email không hợp lệ",
+                                },
+                            })}
+                        />
+                        {errors.email && <p className="text-red-500 px-1">{errors.email.message}</p>}
+                    </div>
+                    <div className="w-full flex flex-col">
+                        <Input
+                            type="phone"
+                            placeholder="Số điện thoại"
+                            className="py-2 px-2 w-full focus:border-darkRed focus:outline-none"
+                            {...register("phone", { required: "Số điện thoại là bắt buộc" })}
+                        />
+                        {errors.phone && <p className="text-red-500 px-1">{errors.phone.message}</p>}
+                    </div>
                 </div>
                 <Input
                     type="textarea"
                     placeholder="Nội dung cần hỗ trợ"
-                    className=""
+                    className="focus:border-darkRed focus:outline-none"
                     {...register("message", { required: "Nội dung là bắt buộc" })}
                 />
-                {errors.message && <p className="text-red-500">{errors.message.message}</p>}
+                {errors.message && <p className="text-red-500 px-1">{errors.message.message}</p>}
                 <Button typeButton="secondary" type="submit" text="Gửi thông tin" color="darkRed" />
             </form>
 

@@ -10,11 +10,9 @@ export default function App() {
   const [isVisible, setIsVisible] = useState(false);
   const ref = useRef(null);
 
-  // Lắng nghe sự kiện cuộn trang để thay đổi kích thước ảnh & background
+  // Lắng nghe sự kiện cuộn trang để thay đổi trạng thái cuộn
   useEffect(() => {
-    const handleScroll = () => {
-      setScrollY(window.scrollY);
-    };
+    const handleScroll = () => setScrollY(window.scrollY);
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
@@ -39,18 +37,24 @@ export default function App() {
   }, []);
 
   return (
-    <div
-      className="flex flex-col items-center justify-center min-h-screen transition-all duration-500 w-full"
-      style={{
-        backgroundImage: scrollY > 100 ? `url(${BgImage.src})`: 'none',
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        backgroundRepeat: "no-repeat",
-        backgroundColor: scrollY > 100 ? "#FFFDEF" : "transparent", // Khi cuộn xuống, đổi sang màu nền khác
-      }}
-    >
+    <div className="relative w-full min-h-screen flex flex-col items-center justify-center overflow-hidden">
+      {/* Background chỉ xuất hiện khi cuộn xuống */}
+      <div
+        className="absolute top-0 left-0 w-full h-full transition-opacity duration-700 ease-in-out"
+        style={{
+          backgroundImage: scrollY > 100 ? `url(${BgImage.src})` : "none",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+          opacity: scrollY > 100 ? 1 : 0, // Background fade-in khi cuộn xuống
+          position: "fixed",
+          zIndex: -1,
+          transition: "opacity 0.7s ease-in-out",
+        }}
+      ></div>
+
       {/* Tiêu đề */}
-      <h2 className="text-darkRed text-center text-xl md:text-2xl lg:text-3xl font-semibold px-4">
+      <h2 className="text-darkRed text-center px-4 transition-all duration-500">
         Cần gì phải đắn đo suy nghĩ về buổi hẹn khi có PerfectDate ở đây?
       </h2>
 
