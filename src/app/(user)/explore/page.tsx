@@ -10,7 +10,6 @@ export default function App() {
   const [isVisible, setIsVisible] = useState(false);
   const ref = useRef(null);
 
-<<<<<<< HEAD
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
@@ -20,15 +19,10 @@ export default function App() {
         setScrollY(currentScrollY);
       }
     };
-=======
-  // Lắng nghe sự kiện cuộn trang để thay đổi trạng thái cuộn
-  useEffect(() => {
-    const handleScroll = () => setScrollY(window.scrollY);
->>>>>>> e66200221490f87040d80c4184d57e5bc556c8a1
-
+  
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [scrollY]); // Luôn giữ [scrollY] từ đầu
+  }, [scrollY]);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -45,10 +39,10 @@ export default function App() {
     return () => {
       if (ref.current) observer.unobserve(ref.current);
     };
-  }, []); // Không phụ thuộc gì ở đây
+  }, []);
 
   return (
-    <div className="relative w-full min-h-screen flex flex-col items-center justify-center overflow-hidden">
+    <div className="relative w-full min-h-screen flex flex-col items-center justify-center overflow-hidden pt-20"> {/* Thêm pt-20 */}
       {/* Background chỉ xuất hiện khi cuộn xuống */}
       <div
         className="absolute top-0 left-0 w-full h-full transition-opacity duration-700 ease-in-out"
@@ -57,7 +51,7 @@ export default function App() {
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
-          opacity: scrollY > 100 ? 1 : 0, // Background fade-in khi cuộn xuống
+          opacity: scrollY > 100 ? 1 : 0,
           position: "fixed",
           zIndex: -1,
           transition: "opacity 0.7s ease-in-out",

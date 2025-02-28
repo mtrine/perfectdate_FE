@@ -21,7 +21,7 @@ export default function Input({ type, placeholder, className, ...rest }: InputPr
         <input
             type={type}
             placeholder={placeholder}
-            className={`w-full p-4 border border-[#00000033] rounded-full ${className}`}
+            className={`w-full p-4 border h-8 sm:h-10 border-[#00000033] rounded-full ${className}`}
             {...rest}
         />
     );

@@ -7,13 +7,12 @@ import SlideBar from "./SlideBar";
 import { useEffect, useState } from "react";
 import AccountBar from "./AccountBar";
 
-
 export default function Header() {
     const [isOpen, setIsOpen] = useState(false);
     const [isAccountDropdownOpen, setIsAccountDropdownOpen] = useState(false);
     
     useEffect(() => {
-        const handleClickOutside = (event:any) => {
+        const handleClickOutside = (event: any) => {
           const dropdown = document.querySelector(".account-dropdown");
           if (dropdown && !dropdown.contains(event.target)) {
             setIsAccountDropdownOpen(false);
@@ -26,8 +25,8 @@ export default function Header() {
       }, []);
 
     return (
-    <header className="bg-cream border-b-2 border-darkRed fixed top-0 left-0 right-0 z-10">
-      <nav className="flex justify-between items-center px-4 py-2 md:px-8 lg:px-12">
+    <header className="bg-cream border-b-2 border-darkRed fixed top-0 left-0 right-0 z-10 h-20"> {/* Cố định height với h-20 */}
+      <nav className="flex justify-between items-center px-4 py-2 md:px-8 lg:px-12 h-full">
         <div className="flex-1 text-center">
           <h1 className="font-playfair-bold text-darkRed">PerfectDate</h1>
         </div>
@@ -59,4 +58,3 @@ export default function Header() {
     </header>
   );
 }
-

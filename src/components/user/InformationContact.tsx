@@ -1,4 +1,4 @@
-import FieldInInforContact from "./InputField";
+import FieldInInforContact from "./FieldInforContact";
 
 export default function InformationContact() {
     return (

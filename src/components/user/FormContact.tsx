@@ -38,7 +38,7 @@ export default function FormContact() {
     return (
         <div className="relative"> {/* Thêm relative để alert neo vào đây nếu cần */}
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-2 w-full">
-                <div className="flex gap-[10%] w-full">
+                <div className="flex flex-col sm:flex-row space-y-[2%] sm:space-y-0 sm:space-x-[2%] w-full">
                     <div className="flex flex-col w-full">
                         <Input
                             type="text"
@@ -58,7 +58,7 @@ export default function FormContact() {
                         {errors.givenName && <p className="text-red-500 px-1">{errors.givenName.message}</p>}
                     </div>
                 </div>
-                <div className="flex gap-[10%] w-full">
+                <div className="flex flex-col sm:flex-row space-y-[2%] sm:space-y-0 sm:space-x-[2%] w-full">
                     <div className="w-full flex flex-col">
                         <Input
                             type="email"
