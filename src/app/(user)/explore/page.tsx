@@ -5,18 +5,18 @@ import Explore from "@/assets/images/explore.png";
 import PostItem from "@/components/user/PostItem";
 import BgImage from "@/assets/images/bg-explore.png";
 import { useDispatch } from "react-redux";
-import { getLastestPost } from "@/services/redux/api_request/post_api";
+import { getLatestPost } from "@/services/redux/api_request/post_api";
 import { useSelector } from "react-redux";
 
-export default function App() {
+export default function ExplorePage() {
   const [scrollY, setScrollY] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
   const ref = useRef(null);
   const dispatch = useDispatch();
-  const postList = useSelector((state: { post: { postList: { data: any } } }) => state.post.postList.data);
+  const postList = useSelector((state:any) => state.post.postList?.data || []);
 
   useEffect(() => {
-    getLastestPost(dispatch);
+    getLatestPost(dispatch);
 
   }, []);
   useEffect(() => {
@@ -92,7 +92,7 @@ export default function App() {
           {postList.map((post: any) => (
             <PostItem 
             id={post._id}
-            user_ava=""
+            user_ava={post.createdBy}
             user_name=""
             location=""
             date=""
