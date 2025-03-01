@@ -25,4 +25,4 @@ const postSlice = createSlice({
     },
     });
     export const { getPostListStart, getPostListSuccess, getPostListFailed } = postSlice.actions;
-export default postSlice.reducer;
+    export default postSlice.reducer;
