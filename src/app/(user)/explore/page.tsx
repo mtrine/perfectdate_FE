@@ -7,18 +7,22 @@ import BgImage from "@/assets/images/bg-explore.png";
 import { useDispatch } from "react-redux";
 import { getLatestPost } from "@/services/redux/api_request/post_api";
 import { useSelector } from "react-redux";
+import LoadingScreen from "@/components/LoadingScreen";
+import { useAppSelector } from "@/services/redux/hooks";
+import { selectPostList, selectPostListLoading } from "@/services/redux/selector/postSelector";
 
 export default function ExplorePage() {
   const [scrollY, setScrollY] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
   const ref = useRef(null);
   const dispatch = useDispatch();
-  const postList = useSelector((state:any) => state.post.postList?.data || []);
+  const postList =useAppSelector((state)=>state.post.postList.data );
+  const loading =useAppSelector((state)=>state.post.postList.loading)
 
   useEffect(() => {
     getLatestPost(dispatch);
+  }, [dispatch]);
 
-  }, []);
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
@@ -34,6 +38,10 @@ export default function ExplorePage() {
   }, [scrollY]);
 
   useEffect(() => {
+    if (loading) return; // Ngăn không cho chạy khi loading còn true
+  
+    if (!ref.current) return;
+  
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -42,13 +50,18 @@ export default function ExplorePage() {
       },
       { threshold: 0.3 }
     );
+  
+    observer.observe(ref.current);
+  
+    return () => observer.disconnect();
+  }, [loading]); // Chạy lại khi loading thay đổi
+  
+  
+  
 
-    if (ref.current) observer.observe(ref.current);
-
-    return () => {
-      if (ref.current) observer.unobserve(ref.current);
-    };
-  }, []);
+  if (loading) {
+    return <LoadingScreen />;
+  }
 
   return (
     <div className="relative w-full min-h-screen flex flex-col items-center justify-center overflow-hidden pt-20"> {/* Thêm pt-20 */}
@@ -86,10 +99,11 @@ export default function ExplorePage() {
         <div
           ref={ref}
           className={`transition-all duration-700 ease-out transform ${
-            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-          }`}
-        >
-          {postList.map((post: any) => (
+          isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2"
+        }`}
+  >
+
+          {postList ? (postList.map((post: any) => (
             <PostItem 
             key={post._id} 
             id={post._id}
@@ -100,10 +114,12 @@ export default function ExplorePage() {
             title={post.title}
             description={post.content}
             image_url={post.image}
-            saved_count={0}
+            saved_count={post.likedBy.length}
             saved={false}
             />
-          ))}
+          ))) :(
+            <p>Không có bài viết nào</p>
+          )}
         </div>
       </div>
     </div>
