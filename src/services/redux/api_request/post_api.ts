@@ -1,14 +1,16 @@
 import axiosInstance from "@/services/axios/axios.interceptor"
 import { getPostListFailed, getPostListStart, getPostListSuccess } from "../slice/postSlice"
 
-export const getLastestPost = async (dispatch:any)=> {
+export const getLatestPost = async (dispatch:any)=> {
     dispatch(
         getPostListStart()
     )
     try {
-        const response:any = await axiosInstance.get('v1/post/latest')
-        dispatch(getPostListSuccess(response.result.data))
+        const response:any = await axiosInstance.get('/v1/post/latest')
+        // console.log("response",response) //Khó hiểu thì mở cái đoạn code này ra để xem tại sao mtri đổi v
+        dispatch(getPostListSuccess(response.data))
     } catch (error) {
-        dispatch(getPostListFailed(error))
+        console.log("error",error)
+        dispatch(getPostListFailed((error as Error).message))
     }
 }
