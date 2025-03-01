@@ -17,20 +17,23 @@ const initialState: PostState = {
   },
 };
 
+const postSlice = createSlice({
+  name: "post",
+  initialState,
+  reducers: {
+    getPostListStart(state) {
+      state.postList.loading = true;
     },
-    reducers: {
-        getPostListStart(state) {
-            state.postList.loading = true;
-        },
-        getPostListSuccess(state, action) {
-            state.postList.data = action.payload;
-            state.postList.loading = false;
-        },
-        getPostListFailed(state, action) {
-            state.postList.error = action.payload;
-            state.postList.loading = false;
-        },
+    getPostListSuccess(state, action: any) {
+      state.postList.data = action.payload.result.data; // cái này muốn biết tại sao mtri đổi thì bên file post_api mtri có note
+      state.postList.loading = false;
     },
-    });
-    export const { getPostListStart, getPostListSuccess, getPostListFailed } = postSlice.actions;
+    getPostListFailed(state, action: PayloadAction<string>) {
+      state.postList.error = action.payload;
+      state.postList.loading = false;
+    },
+  },
+});
+
+export const { getPostListStart, getPostListSuccess, getPostListFailed } = postSlice.actions;
 export default postSlice.reducer;

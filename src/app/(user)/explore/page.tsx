@@ -82,7 +82,7 @@ export default function ExplorePage() {
         }}
       />
 
-      <div className="flex flex-col lg:w-[50%] md:w-[50%] sm:w-[80%] h-auto mt-8">
+      <div className="flex flex-col lg:w-[50%] md:w-[60%] sm:w-[80%] h-auto mt-8">
         <div
           ref={ref}
           className={`transition-all duration-700 ease-out transform ${
@@ -91,14 +91,15 @@ export default function ExplorePage() {
         >
           {postList.map((post: any) => (
             <PostItem 
+            key={post._id} 
             id={post._id}
-            user_ava={post.createdBy}
-            user_name=""
-            location=""
-            date=""
-            title=""
-            description=""
-            image_url=""
+            user_ava={post.createdBy.user_avatar}
+            user_name={post.createdBy.user_name}
+            location={post.city}
+            date={post.createdAt}
+            title={post.title}
+            description={post.content}
+            image_url={post.image}
             saved_count={0}
             saved={false}
             />

@@ -1,6 +1,5 @@
 import Image from "next/image";
 import UserAva from "@/assets/images/userava.jpg";
-import PostImage from "@/assets/images/hokego.jpg";
 import SaveIcon from "@/assets/images/save_icon.svg";
 import { useState } from "react";
 import SavedIcon from "@/assets/images/saved_icon.svg";
@@ -26,7 +25,6 @@ export default function PostItem({id,user_name,user_ava,location,date,title,desc
             console.log("Đã lưu bài viết");
         }
     }
-
     return (
         <div className="flex flex-col justify-center text-center w-full h-auto bg-white rounded-[2%] shadow-md px-[4%] py-[3%] my-[3%] gap-4">
             <div className="flex items-center justify-between w-full items-between">
@@ -34,7 +32,7 @@ export default function PostItem({id,user_name,user_ava,location,date,title,desc
                     <div className="flex gap-2">
                         <div className="w-[25px] h-[25px] rounded-full overflow-hidden">
                             <Image
-                                src={user_ava}
+                                src={user_ava||UserAva}
                                 alt="User Avatar"
                                 width={25}
                                 height={25}
@@ -54,7 +52,12 @@ export default function PostItem({id,user_name,user_ava,location,date,title,desc
                     <h3 className="text-gray">{title}</h3>
                     <p className="text-gray">{description}</p>
                 </div>
-                <Image src={image_url} alt="Post Image"className="w-full h-auto object-fit rounded-[2%]"/>                
+                <Image 
+                    src={image_url} 
+                    alt="Post Image"
+                    className="w-full h-auto object-fit rounded-[2%]"
+                    width={2000}
+                    height={2000}/>                
             </div>
             <div className="flex items-center justify-between">
                 <p>Đã lưu bởi {saved_count} người</p>
