@@ -1,13 +1,21 @@
-import { createSlice } from "@reduxjs/toolkit";
+// slices/postSlice.ts
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-const postSlice = createSlice({
-    name: 'post',
-    initialState: {
-        postList: {
-            data: [],
-            loading: false,
-            error: null,
-        },
+interface PostState {
+  postList: {
+    data: any[]; // Replace 'any' with your post type if possible
+    loading: boolean;
+    error: string | null; // Or your error type
+  };
+}
+
+const initialState: PostState = {
+  postList: {
+    data: [],
+    loading: false,
+    error: null,
+  },
+};
 
     },
     reducers: {
@@ -25,4 +33,4 @@ const postSlice = createSlice({
     },
     });
     export const { getPostListStart, getPostListSuccess, getPostListFailed } = postSlice.actions;
-    export default postSlice.reducer;
+export default postSlice.reducer;
