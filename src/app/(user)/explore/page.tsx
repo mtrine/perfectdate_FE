@@ -6,10 +6,8 @@ import PostItem from "@/components/user/PostItem";
 import BgImage from "@/assets/images/bg-explore.png";
 import { useDispatch } from "react-redux";
 import { getLatestPost } from "@/services/redux/api_request/post_api";
-import { useSelector } from "react-redux";
 import LoadingScreen from "@/components/LoadingScreen";
 import { useAppSelector } from "@/services/redux/hooks";
-import { selectPostList, selectPostListLoading } from "@/services/redux/selector/postSelector";
 
 export default function ExplorePage() {
   const [scrollY, setScrollY] = useState(0);
