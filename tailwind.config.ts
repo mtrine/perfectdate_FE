@@ -21,7 +21,8 @@ export default {
         darkRed:"#690E0D",
         lightRed:"#8D0C07",
         gray:"#272421",
-        cream:"#FFFDEF"
+        cream:"#FFFDEF",
+        dropdownBorder:"#9198A1"
       },
       keyframes: {
         scrollDown: {

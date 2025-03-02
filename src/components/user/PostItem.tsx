@@ -56,8 +56,8 @@ export default function PostItem({id,user_name,user_ava,location,date,title,desc
                     src={image_url} 
                     alt="Post Image"
                     className="w-full h-auto object-fit rounded-[2%]"
-                    width={2000}
-                    height={2000}/>                
+                    width={3000}
+                    height={3000}/>                
             </div>
             <div className="flex items-center justify-between">
                 <p>Đã lưu bởi {saved_count} người</p>

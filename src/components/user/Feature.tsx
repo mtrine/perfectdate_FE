@@ -17,7 +17,7 @@ export default function Feature({ text, hoverText = "Đoạn text mới" }: Feat
       onMouseEnter={() => setDisplayText(hoverText)}
       onMouseLeave={() => setDisplayText(text)}
     >
-      <h3 className="text-center font-playfair-regular">{displayText}</h3>
+      <h3 className="text-center font-playfair-regular hover:font-montserrat-regular hover:text-xs">{displayText}</h3>
     </div>
   );
 }

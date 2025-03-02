@@ -22,7 +22,7 @@ export default function AccountBar() {
     }
     return(
         <div className="account-dropdown absolute right-0 mt-2 w-36 sm:w-52 bg-gray text-cream rounded-2xl shadow-lg z-20 before:content-[''] before:absolute before:-top-2 before:right-4 before:w-0 before:h-0 before:border-[10px] before:border-transparent before:border-b-gray before:border-t-0">
-            <ul className="py-1">
+            <ul className="py-0">
                 <li className="flex justify-center items-center hover:font-playfair-bold cursor-pointer">
                     <Link href="/login">Đăng nhập ngay</Link>
                 </li>

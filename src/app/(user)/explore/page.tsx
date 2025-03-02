@@ -5,20 +5,27 @@ import Explore from "@/assets/images/explore.png";
 import PostItem from "@/components/user/PostItem";
 import BgImage from "@/assets/images/bg-explore.png";
 import { useDispatch } from "react-redux";
-import { getLatestPost } from "@/services/redux/api_request/post_api";
+import { getLatestPost, getPopularPost } from "@/services/redux/api_request/post_api";
 import { useSelector } from "react-redux";
+import Dropdown from "@/components/user/Dropdown";
 
 export default function ExplorePage() {
   const [scrollY, setScrollY] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
+  const[sortBy, setSortBy] = useState("Mới nhất");
   const ref = useRef(null);
   const dispatch = useDispatch();
   const postList = useSelector((state:any) => state.post.postList?.data || []);
 
   useEffect(() => {
-    getLatestPost(dispatch);
+    if(sortBy === "Mới nhất"){
+      getPopularPost(dispatch)
+    }
+    else{
+      getLatestPost(dispatch)
+    }
+  }, [sortBy]);
 
-  }, []);
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
@@ -51,10 +58,10 @@ export default function ExplorePage() {
   }, []);
 
   return (
-    <div className="relative w-full min-h-screen flex flex-col items-center justify-center overflow-hidden pt-20"> {/* Thêm pt-20 */}
+    <div className="w-full flex flex-col items-center justify-center overflow-hidden pt-20" >
       {/* Background chỉ xuất hiện khi cuộn xuống */}
       <div
-        className="absolute top-0 left-0 w-full h-full transition-opacity duration-700 ease-in-out"
+        className="absolute top-0 left-0 w-full h-full justify-center items-center transition-opacity duration-700 ease-in-out"
         style={{
           backgroundImage: scrollY > 100 ? `url(${BgImage.src})` : "none",
           backgroundSize: "cover",
@@ -82,13 +89,42 @@ export default function ExplorePage() {
         }}
       />
 
-      <div className="flex flex-col lg:w-[50%] md:w-[60%] sm:w-[80%] h-auto mt-8">
+      <div className="flex flex-col lg:w-[50%] md:w-[60%] sm:w-[80%] h-auto mt-8 items-center justify-center">
         <div
           ref={ref}
           className={`transition-all duration-700 ease-out transform ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
           }`}
         >
+        <div className="flex justify-end gap-4">
+        <Dropdown 
+  title="Chọn thành phố"
+  options={[
+    "An Giang", "Bà Rịa - Vũng Tàu", "Bắc Giang", "Bắc Kạn", "Bạc Liêu",
+    "Bắc Ninh", "Bến Tre", "Bình Định", "Bình Dương", "Bình Phước", 
+    "Bình Thuận", "Cà Mau", "Cần Thơ", "Cao Bằng", "Đà Nẵng",
+    "Đắk Lắk", "Đắk Nông", "Điện Biên", "Đồng Nai", "Đồng Tháp", 
+    "Gia Lai", "Hà Giang", "Hà Nam", "Hà Nội", "Hà Tĩnh", 
+    "Hải Dương", "Hải Phòng", "Hậu Giang", "Hòa Bình", "Hồ Chí Minh", 
+    "Hưng Yên", "Khánh Hòa", "Kiên Giang", "Kon Tum", "Lai Châu", 
+    "Lâm Đồng", "Lạng Sơn", "Lào Cai", "Long An", "Nam Định",
+    "Nghệ An", "Ninh Bình", "Ninh Thuận", "Phú Thọ", "Phú Yên", 
+    "Quảng Bình", "Quảng Nam", "Quảng Ngãi", "Quảng Ninh", "Quảng Trị",
+    "Sóc Trăng", "Sơn La", "Tây Ninh", "Thái Bình", "Thái Nguyên", 
+    "Thanh Hóa", "Thừa Thiên Huế", "Tiền Giang", "Trà Vinh", "Tuyên Quang", 
+    "Vĩnh Long", "Vĩnh Phúc", "Yên Bái"
+  ]}
+  onChange={setSortBy}
+/>
+
+          <Dropdown
+            title="Sắp xếp theo"
+            options={["Mới nhất", "Nổi bật nhất"]}
+            onChange={(value) => setSortBy(value)} // ✅ Bắt sự kiện thay đổi
+          />
+
+
+        </div>
           {postList.map((post: any) => (
             <PostItem 
             key={post._id} 
