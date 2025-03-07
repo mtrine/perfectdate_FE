@@ -57,9 +57,6 @@ export default function ExplorePage() {
     return () => observer.disconnect();
   }, [loading]); // Chạy lại khi loading thay đổi
   
-  
-  
-
   if (loading) {
     return <LoadingScreen />;
   }

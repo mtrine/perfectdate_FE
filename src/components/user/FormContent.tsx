@@ -1,8 +1,11 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import Input from "./Input";
 import Button from "../Button";
+import { createReport } from "@/services/redux/api_request/report_api";
+import { useAppDispatch, useAppSelector } from "@/services/redux/hooks";
+import LoadingScreen from "../LoadingScreen";
 
 type FormData = {
     familyName: string;
@@ -16,6 +19,8 @@ interface FormContentProps {
     setShowAlert: (value: boolean) => void;
 }
 const FormContent = React.memo(({ setShowAlert }:FormContentProps) => {
+    const dispatch = useAppDispatch();
+    const loading = useAppSelector((state) => state.report.createReport.loading); 
     const {
         register,
         handleSubmit,
@@ -30,12 +35,17 @@ const FormContent = React.memo(({ setShowAlert }:FormContentProps) => {
         },
     });
 
-    const onSubmit = (data: FormData) => {
+    const onSubmit =async  (data: FormData) => {
         console.log("Form data:", data);
-        setShowAlert(true);
+        const success= await createReport(dispatch,data);
+        if(success) setShowAlert(true);
     };
 
+   
+    
     return (
+        <>
+        {loading && <LoadingScreen />}
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-2 w-full">
             <div className="flex flex-col sm:flex-row space-y-[2%] sm:space-y-0 sm:space-x-[2%] w-full">
                 <div className="flex flex-col w-full">
@@ -92,6 +102,7 @@ const FormContent = React.memo(({ setShowAlert }:FormContentProps) => {
             {errors.message && <p className="text-lightRed px-1">{errors.message.message}</p>}
             <Button typeButton="secondary" type="submit" text="Gửi thông tin" color="darkRed" />
         </form>
+        </>
     );
 });
 export default FormContent;
