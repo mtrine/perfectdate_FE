@@ -27,7 +27,7 @@ export default function Dropdown({ options, title, onChange }: DropdownProps) {
     <div className="relative inline-block text-left" ref={dropdownRef}>
       {/* Nút dropdown */}
       <button
-        className="bg-white text-gray-700 px-8 py-2 border border-gray-300 rounded-md shadow-sm flex items-center justify-between"
+        className="bg-white text-gray-700 px-8 py-2 border border-gray-300 rounded-md shadow-sm flex items-center justify-between "
         onClick={() => setIsOpen(!isOpen)}
       >
         {selectedOption || title}
@@ -45,7 +45,7 @@ export default function Dropdown({ options, title, onChange }: DropdownProps) {
                 setIsOpen(false);
                 onChange(option); // ✅ Gửi giá trị về ExplorePage
               }}
-              className="block w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-200"
+              className="block w-full text-left px-4 py-2 text-gray-700 hover:bg-lightGray rounded-md"
             >
               {option}
             </button>

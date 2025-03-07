@@ -10,6 +10,9 @@ import LoadingScreen from "@/components/LoadingScreen";
 import { useAppSelector } from "@/services/redux/hooks";
 import Empty from "@/assets/images/empty.png";
 import Button from "@/components/Button";
+import Dropbox from "next-auth/providers/dropbox";
+import Dropdown from "@/components/user/Dropdown";
+import { option } from "framer-motion/client";
 
 export default function ExplorePage() {
   const [scrollY, setScrollY] = useState(0);
@@ -99,8 +102,18 @@ export default function ExplorePage() {
           className={`transition-all duration-700 ease-out transform ${
           isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2"
         }`}
-  >
 
+
+  >
+          <Dropdown
+            options={["Mới nhất", "Phổ biến nhất"]}
+            title="Mới nhất"
+            onChange={
+              (value: string) => {
+                setSortBy(value);
+              }
+            }
+            />
           {postList && postList.length > 0 ? (postList.map((post: any) => (
             <PostItem 
             key={post._id} 
