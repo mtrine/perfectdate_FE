@@ -5,9 +5,11 @@ import Explore from "@/assets/images/explore.png";
 import PostItem from "@/components/user/PostItem";
 import BgImage from "@/assets/images/bg-explore.png";
 import { useDispatch } from "react-redux";
-import { getLatestPost, getPopularPost } from "@/services/redux/api_request/post_api";
-import { useSelector } from "react-redux";
-import Dropdown from "@/components/user/Dropdown";
+import { getLatestPost } from "@/services/redux/api_request/post_api";
+import LoadingScreen from "@/components/LoadingScreen";
+import { useAppSelector } from "@/services/redux/hooks";
+import Empty from "@/assets/images/empty.png";
+import Button from "@/components/Button";
 
 export default function ExplorePage() {
   const [scrollY, setScrollY] = useState(0);
@@ -15,16 +17,12 @@ export default function ExplorePage() {
   const[sortBy, setSortBy] = useState("Mới nhất");
   const ref = useRef(null);
   const dispatch = useDispatch();
-  const postList = useSelector((state:any) => state.post.postList?.data || []);
+  const postList =useAppSelector((state)=>state.post.postList.data );
+  const loading =useAppSelector((state)=>state.post.postList.loading)
 
   useEffect(() => {
-    if(sortBy === "Mới nhất"){
-      getPopularPost(dispatch)
-    }
-    else{
-      getLatestPost(dispatch)
-    }
-  }, [sortBy]);
+    getLatestPost(dispatch);
+  }, [dispatch]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -41,6 +39,10 @@ export default function ExplorePage() {
   }, [scrollY]);
 
   useEffect(() => {
+    if (loading) return; // Ngăn không cho chạy khi loading còn true
+  
+    if (!ref.current) return;
+  
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -49,13 +51,18 @@ export default function ExplorePage() {
       },
       { threshold: 0.3 }
     );
+  
+    observer.observe(ref.current);
+  
+    return () => observer.disconnect();
+  }, [loading]); // Chạy lại khi loading thay đổi
+  
+  
+  
 
-    if (ref.current) observer.observe(ref.current);
-
-    return () => {
-      if (ref.current) observer.unobserve(ref.current);
-    };
-  }, []);
+  if (loading) {
+    return <LoadingScreen />;
+  }
 
   return (
     <div className="w-full flex flex-col items-center justify-center overflow-hidden pt-20" >
@@ -93,39 +100,11 @@ export default function ExplorePage() {
         <div
           ref={ref}
           className={`transition-all duration-700 ease-out transform ${
-            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-          }`}
-        >
-        <div className="flex justify-end gap-4">
-        <Dropdown 
-  title="Chọn thành phố"
-  options={[
-    "An Giang", "Bà Rịa - Vũng Tàu", "Bắc Giang", "Bắc Kạn", "Bạc Liêu",
-    "Bắc Ninh", "Bến Tre", "Bình Định", "Bình Dương", "Bình Phước", 
-    "Bình Thuận", "Cà Mau", "Cần Thơ", "Cao Bằng", "Đà Nẵng",
-    "Đắk Lắk", "Đắk Nông", "Điện Biên", "Đồng Nai", "Đồng Tháp", 
-    "Gia Lai", "Hà Giang", "Hà Nam", "Hà Nội", "Hà Tĩnh", 
-    "Hải Dương", "Hải Phòng", "Hậu Giang", "Hòa Bình", "Hồ Chí Minh", 
-    "Hưng Yên", "Khánh Hòa", "Kiên Giang", "Kon Tum", "Lai Châu", 
-    "Lâm Đồng", "Lạng Sơn", "Lào Cai", "Long An", "Nam Định",
-    "Nghệ An", "Ninh Bình", "Ninh Thuận", "Phú Thọ", "Phú Yên", 
-    "Quảng Bình", "Quảng Nam", "Quảng Ngãi", "Quảng Ninh", "Quảng Trị",
-    "Sóc Trăng", "Sơn La", "Tây Ninh", "Thái Bình", "Thái Nguyên", 
-    "Thanh Hóa", "Thừa Thiên Huế", "Tiền Giang", "Trà Vinh", "Tuyên Quang", 
-    "Vĩnh Long", "Vĩnh Phúc", "Yên Bái"
-  ]}
-  onChange={setSortBy}
-/>
+          isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2"
+        }`}
+  >
 
-          <Dropdown
-            title="Sắp xếp theo"
-            options={["Mới nhất", "Nổi bật nhất"]}
-            onChange={(value) => setSortBy(value)} // ✅ Bắt sự kiện thay đổi
-          />
-
-
-        </div>
-          {postList.map((post: any) => (
+          {postList && postList.length > 0 ? (postList.map((post: any) => (
             <PostItem 
             key={post._id} 
             id={post._id}
@@ -136,10 +115,20 @@ export default function ExplorePage() {
             title={post.title}
             description={post.content}
             image_url={post.image}
-            saved_count={0}
+            saved_count={post.likedBy.length}
             saved={false}
             />
-          ))}
+          ))) :(
+            <div className="flex flex-col gap-4 mt-[10%] w-full bg-cream rounded-[2%] border border-darkRed border-[2px] my-[10%] px-8 py-4">
+              <Image src={Empty} alt="Empty" className="w-[400px] h-[400px] mx-auto"/>
+              <h2 className="text-darkRed text-center">Không có bài viết nào</h2>
+              <Button
+                text="Tạo bài viết đầu tiên"
+                onClick={()=>console.log("Tạo bài viết đầu tiên")}
+                typeButton="secondary"
+              />
+            </div>
+          )}
         </div>
       </div>
     </div>

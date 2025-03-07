@@ -62,7 +62,7 @@ export default function PostItem({id,user_name,user_ava,location,date,title,desc
             <div className="flex items-center justify-between">
                 <p>Đã lưu bởi {saved_count} người</p>
                 <Image
-                    src={saved ? SavedIcon : SaveIcon}
+                    src={isSaved ? SavedIcon : SaveIcon}
                     alt="Save Icon"
                     onClick={toggleSave}
                     className="w-[5%] cursor-pointer"
