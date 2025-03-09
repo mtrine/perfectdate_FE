@@ -107,7 +107,7 @@ export default function ExplorePage() {
   >
           <Dropdown
             options={["Mới nhất", "Phổ biến nhất"]}
-            title="Mới nhất"
+            title="Sắp xếp theo"
             onChange={
               (value: string) => {
                 setSortBy(value);
