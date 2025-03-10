@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 
 interface DropdownProps {
-  options: string[];
+  options: any[];
   title: string;
   onChange: (value: string) => void; // ✅ Định nghĩa kiểu đúng
 }
