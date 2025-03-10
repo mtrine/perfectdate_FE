@@ -105,15 +105,19 @@ export default function ExplorePage() {
 
 
   >
-          <Dropdown
-            options={["Mới nhất", "Phổ biến nhất"]}
-            title="Mới nhất"
-            onChange={
-              (value: string) => {
-                setSortBy(value);
-              }
-            }
-            />
+    <div className="flex justify-end w-full">
+      <Dropdown
+        options={["Mới nhất", "Phổ biến nhất"]}
+        title="Mới nhất"
+        onChange={
+        (value: string) =>
+      {
+        setSortBy(value);
+        }
+      }
+      />
+    </div>
+
           {postList && postList.length > 0 ? (postList.map((post: any) => (
             <PostItem 
             key={post._id} 
