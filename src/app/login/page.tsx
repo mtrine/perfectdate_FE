@@ -21,7 +21,7 @@ function LoginContent() {
     const login = useGoogleLogin({
       onSuccess: async (response) => {
         try {
-          await loginGoogle(dispatch, response.access_token); // Gọi hàm loginGoogle
+          await loginGoogle(dispatch, response.access_token,router.push); // Gọi hàm loginGoogle
           // router.push('/dashboard'); // Chuyển hướng tới /dashboard sau khi thành công
         } catch (error) {
           console.error("Error during login:", error);
