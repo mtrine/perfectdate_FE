@@ -3,6 +3,7 @@ import authReducer from "@/services/redux/slice/authSlice";
 import postReducer from "@/services/redux/slice/postSlice";
 import reportReducer from "@/services/redux/slice/reportSlice";
 import userReducer from "@/services/redux/slice/userSlice";
+import planReducer from "@/services/redux/slice/planSlice";
 import {
   persistStore,
   persistReducer,
@@ -26,6 +27,7 @@ const rootReducer = combineReducers({
   post: postReducer,
   report: reportReducer,
   user: userReducer,
+  plan: planReducer,
 })
 
 const persistedReducer = persistReducer(persistConfig, rootReducer)
