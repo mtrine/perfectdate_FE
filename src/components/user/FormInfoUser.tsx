@@ -61,13 +61,13 @@ export default function FormInfoUser() {
                 <h3 className="min-w-[100px]">Tên partner</h3>
                 <Input 
                     type="text"
-                    placeholder={user?.your_partner.user_name}
+                    placeholder={user?.your_partner.user_name? user?.your_partner.user_name : "Bạn chưa có partner"}
                     className="py-2 px-2 w-full focus:border-1 focus:border-darkRed focus:outline-none"
                     disabled={true}
                     {...register("email", { required: "" })}
                 />
               </div>
-              <p className=" text-lightRed underline hover:no-underline cursor-pointer">Hủy kết nối</p>
+              <p className=" text-lightRed underline hover:no-underline cursor-pointer">{user?.your_partner.user_name?"Hủy kết nối":"Kết nối ngay"}</p>
         </div>
       </form>
     )

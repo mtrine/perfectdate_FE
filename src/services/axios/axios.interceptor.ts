@@ -14,12 +14,12 @@ const axiosInstance = axios.create({
 
 const refreshAccessToken = async () => {
   try {
-      console.log('Refresh token');
-      const response = await axiosInstance.get(`/v1/auth/refresh-token`);
-      return response.data;
+    console.log('Refresh token');
+    const response = await axiosInstance.get(`/v1/auth/refresh-token`);
+    return response.data;
   } catch (error) {
-      console.error('Refresh token failed', error);
-      return null;
+    console.error('Refresh token failed', error);
+    return null;
   }
 };
 
@@ -27,32 +27,25 @@ const refreshAccessToken = async () => {
 axiosInstance.interceptors.response.use(
   (response) => response,
   async (error) => {
-      const originalRequest = error.config;
+    const originalRequest = error.config;
 
-      if (error.response?.status === 401 && !originalRequest._retry) {
-          originalRequest._retry = true;
-          const res = await refreshAccessToken();
+    if (error.response?.status === 401 && !originalRequest._retry) {
+      originalRequest._retry = true;
+      const res = await refreshAccessToken();
 
-          // Gọi dispatch để cập nhật state với token mới
-          const dispatch = store.dispatch; // Lấy dispatch từ store
-          if (res) {
-              dispatch(loginSuccess(res)); // Cập nhật state
-          }
-
-          const newAccessToken = res?.data.access_token;
-          if (newAccessToken) {
-              axios.defaults.headers.common['Authorization'] = `Bearer ${newAccessToken}`;
-              originalRequest.headers['Authorization'] = `Bearer ${newAccessToken}`;
-              return axiosInstance(originalRequest); // Retry lại request ban đầu
-          }
-          else {
-              console.log('Token expired');
-              // dispatch(logoutSuccess());
-
-              window.location.href = '/login'; // hoặc sử dụng useHistory để điều hướng
-          }
+      // Gọi dispatch để cập nhật state với token mới
+      const dispatch = store.dispatch; // Lấy dispatch từ store
+      if (res) {
+        dispatch(loginSuccess(res)); // Cập nhật state
       }
-      return Promise.reject(error);
+      else {
+        console.log('Token expired');
+        // dispatch(logoutSuccess());
+
+        window.location.href = '/login'; // hoặc sử dụng useHistory để điều hướng
+      }
+    }
+    return Promise.reject(error);
   }
 );
 
