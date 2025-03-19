@@ -10,7 +10,6 @@ import AccountBar from "./AccountBar";
 export default function Header() {
     const [isOpen, setIsOpen] = useState(false);
     const [isAccountDropdownOpen, setIsAccountDropdownOpen] = useState(false);
-    
     useEffect(() => {
         const handleClickOutside = (event: any) => {
           const dropdown = document.querySelector(".account-dropdown");

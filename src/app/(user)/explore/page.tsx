@@ -22,7 +22,7 @@ export default function ExplorePage() {
   const dispatch = useDispatch();
   const postList =useAppSelector((state)=>state.post.postList.data );
   const loading =useAppSelector((state)=>state.post.postList.loading)
-
+ 
   useEffect(() => {
     getLatestPost(dispatch);
   }, [dispatch]);

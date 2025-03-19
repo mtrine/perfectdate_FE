@@ -36,7 +36,6 @@ const FormContent = React.memo(({ setShowAlert }:FormContentProps) => {
     });
 
     const onSubmit =async  (data: FormData) => {
-        console.log("Form data:", data);
         const success= await createReport(dispatch,data);
         if(success) setShowAlert(true);
     };
