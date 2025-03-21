@@ -22,7 +22,7 @@ export default function Button({ text, onClick, typeButton, type, color="darkRed
         ${
           color === "darkRed"
             ? "border-darkRed text-darkRed hover:bg-darkRed hover:text-white"
-            : "border-cream text-cream hover:bg-cream hover:text-darkRed"
+            : "bg-darkRed text-cream hover:bg-cream hover:text-darkRed"
         }
       `}
       onClick={onClick}

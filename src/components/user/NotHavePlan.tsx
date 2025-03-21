@@ -2,8 +2,10 @@
 import Image from "next/image";
 import Button from "../Button";
 import BrokenHeart from "@/assets/images/broken_heart.png";
+import { useRouter } from "next/navigation";
 
 export default function NotHavePlan() {
+    const router = useRouter();
     return(
         <div className="flex flex-col justify-between items-center space-y-[2%]">
                 <Image 
@@ -18,7 +20,9 @@ export default function NotHavePlan() {
                 text="Tạo ngay !"
                 typeButton="secondary"
                 color="darkRed"
-                onClick={()=>{}}
+                onClick={()=>{
+                    router.push("/dashboard/create-plan")
+                }}
                 type="button"
                 />
             </div>
